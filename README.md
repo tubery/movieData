@@ -23,11 +23,21 @@ Show movie data and allow user to interact.
 Will I get points deducted for mostly black and white websites? I hope not as I
 am a very boring creative person.
 
+Javascript ramping up I will need to brush up using free code camp.
+
+Created HTML mockup using classes I intend to name
+
 ## Building
 
 ---
 
 1. Set up scaffoling boilerplate files and HTML
+
+2. Get data showing on page
+
+3. Allow interaction with data
+
+4. Style website
 
 ## Debugging
 
