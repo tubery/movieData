@@ -37,9 +37,8 @@ let movieData = {
 // Location to insert movies
 const movieContainer = document.querySelector(".movie-container");
 
+// Loop through object and add to UI
 const addToUI = () => {
-	// movieData.keys()
-	console.log(Object.keys(movieData));
 	Object.keys(movieData).forEach((itemKey) => {
 		const movie = movieData[itemKey];
 		const element = createElement(
@@ -50,12 +49,12 @@ const addToUI = () => {
 			movie.plot,
 			movie.cast
 		);
-
-		// console.log(element);
+		// Insert into container
 		movieContainer.appendChild(element);
 	});
 };
 
+// Create element for movies
 const createElement = (name, rating, runtime, year, plot, cast) => {
 	const article = document.createElement("article");
 	article.className = "movie";
