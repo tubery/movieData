@@ -69,4 +69,5 @@ const createElement = (name, rating, runtime, year, plot, cast) => {
 	return article;
 };
 
+// Running
 addToUI();
