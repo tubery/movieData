@@ -34,4 +34,40 @@ let movieData = {
 	},
 };
 
-console.log(movieData);
+// Location to insert movies
+const movieContainer = document.querySelector(".movie-container");
+
+const addToUI = () => {
+	// movieData.keys()
+	console.log(Object.keys(movieData));
+	Object.keys(movieData).forEach((itemKey) => {
+		const movie = movieData[itemKey];
+		const element = createElement(
+			itemKey,
+			movie.rating,
+			movie.runtime,
+			movie.year,
+			movie.plot,
+			movie.cast
+		);
+
+		// console.log(element);
+		movieContainer.appendChild(element);
+	});
+};
+
+const createElement = (name, rating, runtime, year, plot, cast) => {
+	const article = document.createElement("article");
+	article.className = "movie";
+	article.innerHTML = `
+		<h2 class="movie-name">${name}</h2>
+		<p class="movie-year">${year}</p>
+		<p class="movie-runtime">${runtime}</p>
+		<div class="movie-rating">${rating}</div>
+		<p class="movie-cast">${cast}</p>
+		<p class="movie-plot">${plot}</p>
+	`;
+	return article;
+};
+
+addToUI();
