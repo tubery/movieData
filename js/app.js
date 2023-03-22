@@ -37,9 +37,13 @@ let movieData = {
 // Location to insert movies
 const movieContainer = document.querySelector(".movie-container");
 
+// Edit modal
+modal = document.querySelector(".edit");
+const editModal = document.querySelector(".close-edit");
+
 // Loop through object and add to UI
 const addToUI = () => {
-	Object.keys(movieData).forEach((itemKey) => {
+	Object.keys(movieData).forEach((itemKey, index) => {
 		const movie = movieData[itemKey];
 		const element = createElement(
 			itemKey,
@@ -47,16 +51,42 @@ const addToUI = () => {
 			movie.runtime,
 			movie.year,
 			movie.plot,
-			movie.cast
+			movie.cast,
+			index
 		);
+		element.addEventListener("click", (e) => {
+			// console.log(e.target.value);
+			if (e.target.textContent === "Edit") {
+				modal.showModal();
+			}
+			if (e.target.textContent === "Delete") {
+				console.log("delete");
+				console.log(e.target.parentElement);
+			}
+		});
+
 		// Insert into container
 		movieContainer.appendChild(element);
 	});
 };
 
+// Close modal
+editModal.addEventListener("click", () => {
+	modal.close();
+});
+
 // Create element for movies
-const createElement = (name, rating, runtime, year, plot, cast) => {
+const createElement = (
+	name,
+	rating,
+	runtime,
+	year,
+	plot,
+	cast,
+	movieNumber
+) => {
 	const article = document.createElement("article");
+	article.id = movieNumber;
 	article.className = "movie";
 	article.innerHTML = `
 		<h2 class="movie-name">${name}</h2>
@@ -65,6 +95,8 @@ const createElement = (name, rating, runtime, year, plot, cast) => {
 		<div class="movie-rating">${rating}</div>
 		<p class="movie-cast">${cast}</p>
 		<p class="movie-plot">${plot}</p>
+		<button class="edit-movie">Edit</button>
+		<button class="delete-movie">Delete</button>
 	`;
 	return article;
 };
