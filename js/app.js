@@ -40,6 +40,14 @@ const movieContainer = document.querySelector(".movie-container");
 // Edit modal
 modal = document.querySelector(".edit");
 const editModal = document.querySelector(".close-edit");
+const submitEdit = document.querySelector("#submit-edit");
+// edit modal inputs
+const nameInput = document.querySelector("#movie-name-input");
+const yearInput = document.querySelector("#movie-year-input");
+const runtimeInput = document.querySelector("#movie-runtime-input");
+const ratingInput = document.querySelector("#movie-rating-input");
+const castInput = document.querySelector("#movie-cast-input");
+const plotInput = document.querySelector("#movie-plot-input");
 
 // Loop through object and add to UI
 const addToUI = () => {
@@ -55,16 +63,21 @@ const addToUI = () => {
 			index
 		);
 		element.addEventListener("click", (e) => {
-			// console.log(e.target.value);
 			if (e.target.textContent === "Edit") {
+				// console.log(e.target.parentElement.id);
 				modal.showModal();
+				nameInput.value = itemKey;
+				yearInput.value = movie.year;
+				runtimeInput.value = movie.runtime;
+				ratingInput.value = movie.rating;
+				castInput.value = movie.cast;
+				plotInput.value = movie.plot;
 			}
 			if (e.target.textContent === "Delete") {
 				console.log("delete");
 				console.log(e.target.parentElement);
 			}
 		});
-
 		// Insert into container
 		movieContainer.appendChild(element);
 	});
@@ -73,6 +86,11 @@ const addToUI = () => {
 // Close modal
 editModal.addEventListener("click", () => {
 	modal.close();
+});
+
+// Submit edit in modal
+submitEdit.addEventListener("click", (e) => {
+	console.log(e.target);
 });
 
 // Create element for movies

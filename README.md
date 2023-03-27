@@ -27,6 +27,10 @@ Javascript ramping up I will need to brush up using free code camp.
 
 Created HTML mockup using classes I intend to name
 
+Added movies to web page
+
+Added edit modal for users
+
 ## Building
 
 ---
