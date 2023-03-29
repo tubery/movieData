@@ -67,21 +67,30 @@ const addToUI = () => {
 				// console.log(e.target.parentElement.id);
 				modal.showModal();
 				nameInput.value = itemKey;
-				yearInput.value = movie.year;
-				runtimeInput.value = movie.runtime;
 				ratingInput.value = movie.rating;
-				castInput.value = movie.cast;
+				runtimeInput.value = movie.runtime;
+				yearInput.value = movie.year;
 				plotInput.value = movie.plot;
+				castInput.value = movie.cast;
 			}
 			if (e.target.textContent === "Delete") {
 				console.log("delete");
-				console.log(e.target.parentElement);
+				// console.log(e.target.parentElement);
 			}
 		});
 		// Insert into container
 		movieContainer.appendChild(element);
 	});
 };
+
+// Change submit button incase user changes title
+nameInput.addEventListener("keyup", (e) => {
+	if (!Object.keys(movieData).includes(nameInput.value)) {
+		submitEdit.value = "Add to database";
+	} else {
+		submitEdit.value = "Save changes";
+	}
+});
 
 // Close modal
 editModal.addEventListener("click", () => {
@@ -90,7 +99,24 @@ editModal.addEventListener("click", () => {
 
 // Submit edit in modal
 submitEdit.addEventListener("click", (e) => {
-	console.log(e.target);
+	e.preventDefault();
+	if (Object.keys(movieData).includes(nameInput.value)) {
+		console.log("movie exists");
+		movieData[nameInput.value].rating = ratingInput.value;
+		movieData[nameInput.value].runtime = runtimeInput.value;
+		movieData[nameInput.value].year = yearInput.value;
+		movieData[nameInput.value].plot = plotInput.value;
+		movieData[nameInput.value].cast = castInput.value;
+
+		// Clear ui
+		movieContainer.innerHTML = "";
+		// Add changes
+		addToUI();
+		// Close modal
+		modal.close();
+	} else {
+		console.log("does not exist");
+	}
 });
 
 // Create element for movies

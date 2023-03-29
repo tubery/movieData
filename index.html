@@ -28,55 +28,67 @@
 			<section id="modals">
 				<dialog class="edit">
 					<button class="close-edit">X</button>
-					<form method="dialog">
-						<label for="movie-name-input"
-							>Name:
+					<form>
+						<div class="input-group">
+							<label for="movie-name-input">Name: </label>
 							<input
 								id="movie-name-input"
 								type="text"
 								name="movie-name-input"
 							/>
-						</label>
-						<label for="movie-year-input"
-							>Year:
+						</div>
+						<div class="input-group">
+							<label for="movie-year-input">Year:</label>
 							<input
 								id="movie-year-input"
 								type="number"
 								name="movie-year-input"
 							/>
-						</label>
-						<label for="movie-runtime-input"
-							>Runtime(minutes):
+						</div>
+
+						<div class="input-group">
+							<label for="movie-runtime-input"
+								>Runtime(minutes):
+							</label>
 							<input
 								id="movie-runtime-input"
 								type="number"
 								name="movie-runtime-input"
 							/>
-						</label>
-						<label for="movie-rating-input"
-							>Rating(out of 10):
+						</div>
+
+						<div class="input-group">
+							<label for="movie-rating-input"
+								>Rating(out of 10):
+							</label>
 							<input
 								id="movie-rating-input"
-								type="number"
+								type="text"
 								name="movie-rating-input"
 							/>
-						</label>
-						<label for="movie-cast-input"
-							>Cast:
-							<input
+						</div>
+						<div class="input-group">
+							<label for="movie-cast-input">Cast:</label>
+							<textarea
 								id="movie-cast-input"
 								type="text"
 								name="movie-cast-input"
-							/>
-						</label>
-						<label for="movie-plot-input"
-							>Plot:
-							<input
+								rows="3"
+								cols="30"
+							></textarea>
+						</div>
+						<div class="input-group">
+							<label for="movie-plot-input">Plot:</label>
+							<textarea
 								id="movie-plot-input"
 								type="text"
 								name="movie-plot-input"
-							/>
-						</label>
+								rows="5"
+								cols="30"
+							>
+							</textarea>
+						</div>
+
 						<input
 							id="submit-edit"
 							type="submit"
