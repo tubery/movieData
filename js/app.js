@@ -74,8 +74,9 @@ const addToUI = () => {
 				castInput.value = movie.cast;
 			}
 			if (e.target.textContent === "Delete") {
-				console.log("delete");
-				// console.log(e.target.parentElement);
+				// console.log("delete");
+				delete movieData[itemKey];
+				e.target.parentElement.remove();
 			}
 		});
 		// Insert into container
@@ -101,7 +102,7 @@ editModal.addEventListener("click", () => {
 submitEdit.addEventListener("click", (e) => {
 	e.preventDefault();
 	if (Object.keys(movieData).includes(nameInput.value)) {
-		console.log("movie exists");
+		// console.log("movie exists");
 		movieData[nameInput.value].rating = ratingInput.value;
 		movieData[nameInput.value].runtime = runtimeInput.value;
 		movieData[nameInput.value].year = yearInput.value;
@@ -115,7 +116,7 @@ submitEdit.addEventListener("click", (e) => {
 		// Close modal
 		modal.close();
 	} else {
-		console.log("does not exist");
+		// console.log("does not exist");
 	}
 });
 
