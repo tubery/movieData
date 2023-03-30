@@ -101,6 +101,7 @@ editModal.addEventListener("click", () => {
 // Submit edit in modal
 submitEdit.addEventListener("click", (e) => {
 	e.preventDefault();
+
 	if (Object.keys(movieData).includes(nameInput.value)) {
 		// console.log("movie exists");
 		movieData[nameInput.value].rating = ratingInput.value;
@@ -116,7 +117,19 @@ submitEdit.addEventListener("click", (e) => {
 		// Close modal
 		modal.close();
 	} else {
-		// console.log("does not exist");
+		movieData[nameInput.value] = {
+			rating: ratingInput.value,
+			runtime: runtimeInput.value,
+			year: yearInput.value,
+			plot: plotInput.value,
+			cast: castInput.value,
+		};
+		// Clear ui
+		movieContainer.innerHTML = "";
+		// Add changes
+		addToUI();
+		// Close modal
+		modal.close();
 	}
 });
 
