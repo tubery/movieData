@@ -41,6 +41,7 @@ const movieContainer = document.querySelector(".movie-container");
 modal = document.querySelector(".edit");
 const editModal = document.querySelector(".close-edit");
 const submitEdit = document.querySelector("#submit-edit");
+const addMovie = document.querySelector(".add-movie");
 // edit modal inputs
 const nameInput = document.querySelector("#movie-name-input");
 const yearInput = document.querySelector("#movie-year-input");
@@ -48,6 +49,12 @@ const runtimeInput = document.querySelector("#movie-runtime-input");
 const ratingInput = document.querySelector("#movie-rating-input");
 const castInput = document.querySelector("#movie-cast-input");
 const plotInput = document.querySelector("#movie-plot-input");
+
+// Allow user to add movie
+addMovie.addEventListener("click", () => {
+	modal.showModal();
+	submitEdit.value = "Add to database";
+});
 
 // Loop through object and add to UI
 const addToUI = () => {
