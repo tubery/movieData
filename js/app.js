@@ -42,6 +42,7 @@ modal = document.querySelector(".edit");
 const editModal = document.querySelector(".close-edit");
 const submitEdit = document.querySelector("#submit-edit");
 const addMovie = document.querySelector(".add-movie");
+const clearMovies = document.querySelector(".clear-movies");
 // edit modal inputs
 const nameInput = document.querySelector("#movie-name-input");
 const yearInput = document.querySelector("#movie-year-input");
@@ -54,6 +55,15 @@ const plotInput = document.querySelector("#movie-plot-input");
 addMovie.addEventListener("click", () => {
 	modal.showModal();
 	submitEdit.value = "Add to database";
+});
+
+// Clear all movies
+clearMovies.addEventListener("click", () => {
+	movieData = {};
+	// Clear ui
+	movieContainer.innerHTML = "";
+	// Add changes
+	addToUI();
 });
 
 // Loop through object and add to UI
