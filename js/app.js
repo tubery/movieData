@@ -61,7 +61,7 @@ addMovie.addEventListener("click", () => {
 clearMovies.addEventListener("click", () => {
 	movieData = {};
 	// Clear ui
-	movieContainer.innerHTML = "";
+	movieContainer.innerHTML = "No movies to display =[";
 	// Add changes
 	addToUI();
 });
@@ -166,10 +166,10 @@ const createElement = (
 	article.innerHTML = `
 		<h2 class="movie-name">${name}</h2>
 		<p class="movie-year">${year}</p>
-		<p class="movie-runtime">${runtime}</p>
-		<div class="movie-rating">${rating}</div>
-		<p class="movie-cast">${cast}</p>
-		<p class="movie-plot">${plot}</p>
+		<p class="movie-runtime">${runtime} minutes</p>
+		<div class="movie-rating">${rating} / 10</div>
+		<p class="movie-cast">Cast: ${cast}</p>
+		<p class="movie-plot">Plot: ${plot}</p>
 		<button class="edit-movie">Edit</button>
 		<button class="delete-movie">Delete</button>
 	`;

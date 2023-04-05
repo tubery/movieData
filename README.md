@@ -31,6 +31,14 @@ Added movies to web page
 
 Added edit modal for users
 
+Added delete functionality
+
+Added clear all functionality
+
+Added add movies functionality
+
+Since JS is done only styling is left
+
 ## Building
 
 ---
