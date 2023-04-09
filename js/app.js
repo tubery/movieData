@@ -115,8 +115,10 @@ const addToUI = () => {
 // Change submit button incase user changes title
 nameInput.addEventListener("keyup", (e) => {
 	if (!Object.keys(movieData).includes(nameInput.value)) {
+		modalTitle.textContent = "Add Movie";
 		submitEdit.value = "Add to database";
 	} else {
+		modalTitle.textContent = "Edit Movie";
 		submitEdit.value = "Save changes";
 	}
 });
