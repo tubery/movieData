@@ -40,9 +40,11 @@ const movieContainer = document.querySelector(".movie-container");
 // Edit modal
 modal = document.querySelector(".edit");
 const editModal = document.querySelector(".close-edit");
+const modalTitle = document.querySelector(".modal-title");
 const submitEdit = document.querySelector("#submit-edit");
 const addMovie = document.querySelector(".add-movie");
 const clearMovies = document.querySelector(".clear-movies");
+const errorMsg = document.querySelector("#error");
 // edit modal inputs
 const nameInput = document.querySelector("#movie-name-input");
 const yearInput = document.querySelector("#movie-year-input");
@@ -54,6 +56,13 @@ const plotInput = document.querySelector("#movie-plot-input");
 // Allow user to add movie
 addMovie.addEventListener("click", () => {
 	modal.showModal();
+	modalTitle.textContent = "Add Movie";
+	nameInput.value = "";
+	yearInput.value = "";
+	runtimeInput.value = "";
+	ratingInput.value = "";
+	castInput.value = "";
+	plotInput.value = "";
 	submitEdit.value = "Add to database";
 });
 
@@ -61,7 +70,7 @@ addMovie.addEventListener("click", () => {
 clearMovies.addEventListener("click", () => {
 	movieData = {};
 	// Clear ui
-	movieContainer.innerHTML = "No movies to display =[";
+	movieContainer.innerHTML = "";
 	// Add changes
 	addToUI();
 });
@@ -83,6 +92,8 @@ const addToUI = () => {
 			if (e.target.textContent === "Edit") {
 				// console.log(e.target.parentElement.id);
 				modal.showModal();
+				modalTitle.textContent = "Edit Movie";
+				submitEdit.value = "Save changes";
 				nameInput.value = itemKey;
 				ratingInput.value = movie.rating;
 				runtimeInput.value = movie.runtime;
@@ -118,35 +129,55 @@ editModal.addEventListener("click", () => {
 // Submit edit in modal
 submitEdit.addEventListener("click", (e) => {
 	e.preventDefault();
-
-	if (Object.keys(movieData).includes(nameInput.value)) {
-		// console.log("movie exists");
-		movieData[nameInput.value].rating = ratingInput.value;
-		movieData[nameInput.value].runtime = runtimeInput.value;
-		movieData[nameInput.value].year = yearInput.value;
-		movieData[nameInput.value].plot = plotInput.value;
-		movieData[nameInput.value].cast = castInput.value;
-
-		// Clear ui
-		movieContainer.innerHTML = "";
-		// Add changes
-		addToUI();
-		// Close modal
-		modal.close();
+	if (
+		nameInput.value === "" ||
+		ratingInput.value === "" ||
+		ratingInput.value < 0 ||
+		ratingInput.value > 10 ||
+		runtimeInput === "" ||
+		runtimeInput.value < 0 ||
+		runtimeInput.value > 500 ||
+		yearInput.value === "" ||
+		yearInput.value < 1890 ||
+		yearInput.value > 3000 ||
+		plotInput.value === "" ||
+		castInput.value === ""
+	) {
+		console.log("Please fillm fields");
+		errorMsg.classList.toggle("hidden");
+		setTimeout(() => {
+			errorMsg.classList.toggle("hidden");
+		}, 3000);
 	} else {
-		movieData[nameInput.value] = {
-			rating: ratingInput.value,
-			runtime: runtimeInput.value,
-			year: yearInput.value,
-			plot: plotInput.value,
-			cast: castInput.value,
-		};
-		// Clear ui
-		movieContainer.innerHTML = "";
-		// Add changes
-		addToUI();
-		// Close modal
-		modal.close();
+		if (Object.keys(movieData).includes(nameInput.value)) {
+			// console.log("movie exists");
+			movieData[nameInput.value].rating = ratingInput.value;
+			movieData[nameInput.value].runtime = runtimeInput.value;
+			movieData[nameInput.value].year = yearInput.value;
+			movieData[nameInput.value].plot = plotInput.value;
+			movieData[nameInput.value].cast = castInput.value;
+
+			// Clear ui
+			movieContainer.innerHTML = "";
+			// Add changes
+			addToUI();
+			// Close modal
+			modal.close();
+		} else {
+			movieData[nameInput.value] = {
+				rating: ratingInput.value,
+				runtime: runtimeInput.value,
+				year: yearInput.value,
+				plot: plotInput.value,
+				cast: castInput.value,
+			};
+			// Clear ui
+			movieContainer.innerHTML = "";
+			// Add changes
+			addToUI();
+			// Close modal
+			modal.close();
+		}
 	}
 });
 

@@ -9,11 +9,13 @@ body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-header {
+header,
+footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 1rem;
+	margin: 1rem 0;
 }
 
 /* Edit modal */
@@ -21,7 +23,7 @@ header {
 	top: 0;
 	left: 0;
 	transform: translate(calc(50vw - 50%), calc(50vh - 50%));
-	padding: 2rem 3rem;
+	padding: 2rem 2rem;
 }
 
 .edit form {
@@ -30,14 +32,65 @@ header {
 	gap: 1rem;
 }
 
+.hidden {
+	display: none;
+}
+
+#error {
+	color: red;
+	margin: 1rem 0;
+	padding: 1rem;
+	text-align: center;
+	border: 1px solid red;
+}
+
 .edit form input {
 	width: 100%;
+}
+
+input,
+textarea {
+	font-size: 1rem;
+	padding: 0.2rem 0.4rem;
 }
 
 .input-group {
 	display: flex;
 	flex-direction: column;
 	gap: 0.3rem;
+	font-size: 1.1rem;
+}
+
+#submit-edit {
+	padding: 0.3rem 1rem;
+	background-color: #04aa6d;
+	color: white;
+	border: none;
+}
+
+#submit-edit:hover {
+	background-color: #04945f;
+	cursor: pointer;
+}
+
+.close-container {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 0 0.5rem 0;
+}
+
+.close-edit {
+	padding: 0.2rem 1rem;
+	background: #fff;
+	color: #d11a2a;
+	border: 1px solid #d11a2a;
+}
+
+.close-edit:hover {
+	background-color: #d11a2a;
+	color: #fff;
+	border: 1px solid #d11a2a;
+	cursor: pointer;
 }
 
 /* Movies */
@@ -84,10 +137,13 @@ header {
 	align-items: start;
 	padding: 1rem;
 	gap: 1rem;
+	transition: all 1s linear;
 }
 
 .movie {
+	min-width: 400px;
 	max-width: 400px;
+	min-height: 400px;
 	max-height: 400px;
 	display: flex;
 	flex-direction: column;
