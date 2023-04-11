@@ -39,6 +39,29 @@ Added add movies functionality
 
 Since JS is done only styling is left
 
+### Post development
+
+Should have refactored the javascript before submitting as I have chunks of code
+that are reused
+
+I think I could have used event bubbling instead of looping through all elements
+and adding event listeners
+
+Sanitization and validation should be much better if this were a real website
+
+Add sort option next time and maybe filters
+
+Styling once again very barebones I will have to step it up considerably for the
+last two projects
+
+Could have used local storage since I have knowledge of that
+
+Light and dark mode could be an addition or themes
+
+Animations to make it more lively
+
+CSS not very clean currently split into sections
+
 ## Building
 
 ---
